@@ -1,5 +1,6 @@
 package tests;
 
+import manager.ApplicationManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,60 +12,21 @@ import java.time.Duration;
 
 public class TestBase {
 
-    WebDriver wd;
+   static ApplicationManager app = new ApplicationManager();
 
     @BeforeMethod //steps 1-2
-    public void preCondition() {
-//1. open browser
-        wd = new ChromeDriver();
-//2 .open www....
-        wd.navigate().to("https://contacts-app.tobbymarshall815.vercel.app/");
-        wd.manage().window().maximize();//opens tab(browser) on full window
-        wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));//wait 5 seconds from next step for download all elements on web-page
-        //implicitlyWait is for each of "wd.findElement()"
+    public void setUp() {
+
+        app.init();
 
     }
-
 
     @AfterMethod //step 7
     public void tearDown() {
-//7. quit driver
 
-        wd.quit();
-
-    }
-
-    //////////////////////  methods  ///////////////////////////
-    public void openLoginRegistrationForm() {
-
-        WebElement loginTab = wd.findElement(By.cssSelector("a[href='/login']"));
-        loginTab.click();
-    }
-
-    public void submitLogin() {
-        wd.findElement(By.xpath("//button[1]")).click();
-    }
-
-    public void submitRegistration() {
-        wd.findElement(By.xpath("//button[2]")).click();
-    }
-
-    public void fillLoginRegistrationForm(String email, String password) {
-        //find + click + clear + sendKey
-        type(By.xpath("//input[1]"), email);
-        //find + click + clear + sendKey
-        type(By.xpath("//input[2]"), password);
+        app.stop();
 
     }
-
-    public void type(By locator, String text) {
-        //find + click + clear + sendKey
-        if (text != null) {
-            WebElement element = wd.findElement(locator);
-            element.click();
-            element.clear();
-            element.sendKeys(text);
-        }
-    }
+    
 
 }
