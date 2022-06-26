@@ -6,11 +6,9 @@ public class RegistrationTests extends TestBase {
 
     @Test
     public void loginSuccess() {
-//3. open form
-        openLoginRegistrationForm();
-//4. fill form + valid data
-        fillLoginRegistrationForm("gigi001@gmail.com", "Gigi12345$");
-//5. submit registration
-        submitRegistration();
+
+        app.getHelperUser().openLoginRegistrationForm();
+        app.getHelperUser().fillLoginRegistrationForm("gigi001@gmail.com", "Gigi12345$");
+        app.getHelperUser().submitLogin();
     }
 }

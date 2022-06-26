@@ -1,32 +1,36 @@
 package tests;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class LoginTests extends TestBase{
+public class LoginTests extends TestBase {
 
+    @BeforeMethod
+    public void preCondition() {
 
-//login success:
+        if(app.getHelperUser().isLogged()){
+            app.getHelperUser().logOut();
+        }
+    }
+
+    //login success:
     @Test
-    public void loginSuccess(){
-//3. open form
-       openLoginRegistrationForm();
-//4. fill form + valid data
-       fillLoginRegistrationForm("gigi@gmail.com","Gigi12345$");
-//5. submit login
-       submitLogin();
+    public void loginSuccess() {
+
+        app.getHelperUser().openLoginRegistrationForm();
+        app.getHelperUser().fillLoginRegistrationForm("gigi@gmail.com", "Gigi12345$");
+        app.getHelperUser().submitLogin();
 //6. Assert (is login success?) -->button 'logout IS present?'
 
     }
 
-//negative login:
+    //negative login:
     @Test
-    public void negativeLogin(){
-//3. open form
-       openLoginRegistrationForm();
-//4. fill form + invalid data
-       fillLoginRegistrationForm("gigigmail.com","Gigi12345$");
-//5. submit login
-       submitLogin();
+    public void negativeLogin() {
+
+        app.getHelperUser().openLoginRegistrationForm();
+        app.getHelperUser().fillLoginRegistrationForm("gigigmail.com", "Gigi12345$");
+        app.getHelperUser().submitLogin();
 //6. Assert (is login unsuccessful?) -->button 'logout NOT present?'
 
 

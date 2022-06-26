@@ -4,7 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class HelperUser extends HelperBase{
+import java.util.List;
+
+public class HelperUser extends HelperBase {
     public HelperUser(WebDriver wd) {
         super(wd);
     }
@@ -31,4 +33,16 @@ public class HelperUser extends HelperBase{
 
     }
 
+    public boolean isLogged() {
+
+        List<WebElement> list = wd.findElements(By.xpath("//button[text()='Sign Out']"));
+        return list.size()>0;
+    }
+
+    public void logOut() {
+        click(By.xpath("//button[text()='Sign Out']"));
+    }
 }
+
+
+
