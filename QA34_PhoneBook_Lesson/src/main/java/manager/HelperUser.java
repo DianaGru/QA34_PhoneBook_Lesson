@@ -43,7 +43,7 @@ public class HelperUser extends HelperBase {
     public boolean isLogged() {
 
         List<WebElement> list = wd.findElements(By.xpath("//button[text()='Sign Out']"));
-        return list.size()>0;
+        return list.size() > 0;
     }
 
     public void logOut() {
@@ -56,9 +56,9 @@ public class HelperUser extends HelperBase {
         Alert alert = new WebDriverWait(wd, Duration.ofSeconds(5))
                 .until(ExpectedConditions.alertIsPresent());
         //is Alert present
-        if(alert == null){
+        if (alert == null) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
