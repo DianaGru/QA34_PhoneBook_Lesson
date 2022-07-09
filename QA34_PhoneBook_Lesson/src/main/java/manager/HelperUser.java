@@ -62,6 +62,22 @@ public class HelperUser extends HelperBase {
             return true;
         }
     }
+
+    public boolean isErrorFormatDisplayed() {
+        Alert alert = wd.switchTo().alert();
+
+//        alert.getText(); // if at alert's form we can look text
+//        alert.sendKeys("hello world"); // if we need to type something into alert's form
+//        alert.accept(); // click [Ok] button
+//        alert.dismiss(); // click [Cancel] button
+
+        String errorText = alert.getText();
+        System.out.println(errorText);
+        alert.accept();
+
+        return errorText.contains("Wrong email or password format");
+
+    }
 }
 
 

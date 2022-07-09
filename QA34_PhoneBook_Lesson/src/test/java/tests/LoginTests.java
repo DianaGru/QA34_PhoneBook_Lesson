@@ -36,7 +36,8 @@ public class LoginTests extends TestBase {
 //6. Assert (is login unsuccessful?) -->button 'logout NOT present?'
         Assert.assertFalse(app.getHelperUser().isLogged());
         Assert.assertTrue(app.getHelperUser().isAlertDisplayed());
-        Assert.assertTrue();
+        Assert.assertTrue(app.getHelperUser().isErrorFormatDisplayed());
+
 
 
     }

@@ -1,14 +1,25 @@
 package tests;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class RegistrationTests extends TestBase {
 
+    @BeforeMethod
+    public void preCondition() {
+
+        if(app.getHelperUser().isLogged()){
+            app.getHelperUser().logOut();
+        }
+    }
+
     @Test
     public void loginSuccess() {
 
+        int i = (int)System.currentTimeMillis()/1000;
+
         app.getHelperUser().openLoginRegistrationForm();
-        app.getHelperUser().fillLoginRegistrationForm("gigi001@gmail.com", "Gigi12345$");
+        app.getHelperUser().fillLoginRegistrationForm("gigi"+i+"@gmail.com", "Gigi12345$");
         app.getHelperUser().submitLogin();
     }
 }
