@@ -9,6 +9,7 @@ public class ApplicationManager {
 
     WebDriver wd;
     HelperUser helperUser;//1
+    HelperContact contact;
 
     public void init(){
         wd = new ChromeDriver();
@@ -17,6 +18,7 @@ public class ApplicationManager {
         wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         helperUser = new HelperUser(wd);//2
+        contact = new HelperContact(wd);
     }
 
     public void stop(){
@@ -28,4 +30,7 @@ public class ApplicationManager {
         return helperUser;
     }
 
+    public HelperContact contact() {
+        return contact;
+    }
 }
