@@ -85,6 +85,13 @@ public class HelperUser extends HelperBase {
         type(By.xpath("//input[1]"), user.getEmail());
         type(By.xpath("//input[2]"), user.getPassword());
     }
+
+
+    public void login(User user) {
+        openLoginRegistrationForm();
+        fillLoginRegistrationForm("gigi@gmail.com", "Gigi12345$");
+        submitLogin();
+    }
 }
 
 

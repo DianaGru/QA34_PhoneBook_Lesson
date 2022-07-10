@@ -1,8 +1,12 @@
 package tests;
 
 import models.Contact;
+import models.User;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.util.Random;
 
 public class AddNewContact extends TestBase {
 
@@ -12,23 +16,23 @@ public class AddNewContact extends TestBase {
     public void preCondition() {
 
 
-        if (app.getHelperUser().isLogged()) {
-            app.contact().openContactForm();
-        } else {
+        if (!app.getHelperUser().isLogged()) {
+           app.getHelperUser().login(new User().setEmail("gigigmail.com").setPassword("Gigi12345$"));
 
-            app.getHelperUser().openLoginRegistrationForm();
-            app.getHelperUser().fillLoginRegistrationForm("gigi@gmail.com", "Gigi12345$");
-            app.getHelperUser().submitLogin();
+
         }
 
     }
 
     @Test
     public void positiveAddNewContact() {
+        Random random = new Random();
+        int i = random.nextInt(1000)+1000;
+
         Contact contact = Contact.builder()
-                .name("Hanna")
+                .name("Hanna"+1)
                 .lastName("Levi")
-                .phone("052-326-06-26")
+                .phone("052-326"+i)
                 .email("hanna@gmail.com")
                 .address("Jaffo, Israel")
                 .description("student friend")
@@ -37,6 +41,8 @@ public class AddNewContact extends TestBase {
         app.contact().openContactForm();
         app.contact().fillContactForm(contact);
         app.contact().save();
+
+        Assert.assertTrue(app.contact().isContactAddedByName(contact.getName()));
     }
 
     @Test
@@ -54,6 +60,8 @@ public class AddNewContact extends TestBase {
         app.contact().openContactForm();
         app.contact().fillContactForm(contact);
         app.contact().save();
+
+        Assert.assertTrue(app.contact().isContactAddedByName(contact.getName()));
     }
 
 
