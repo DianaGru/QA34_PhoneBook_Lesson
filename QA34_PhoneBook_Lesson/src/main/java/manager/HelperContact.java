@@ -53,14 +53,12 @@ public class HelperContact extends HelperBase{
 
 
     public boolean isContactAddedByPhone(String phone) {
-        List<WebElement> phones = wd.findElements(By.cssSelector("h3"));
-        for (WebElement el : phones) {
-            if (el.getText().equals(phones)) {
+        List <WebElement> phones = wd.findElements(By.cssSelector("h3"));
+        for (WebElement el:phones){
+            if(el.getText().equals(phone)){
                 return true;
             }
-
         }
-
         return false;
     }
 
@@ -68,7 +66,7 @@ public class HelperContact extends HelperBase{
 
         //count before
         int countBefore = countOfContacts();
-        System.out.println(countBefore);
+        logger.info("Count before remove is ");
 
         if(!isContactListEmpty()){
             click(By.cssSelector(".contact-item_card__2SOIM"));
@@ -79,8 +77,9 @@ public class HelperContact extends HelperBase{
         //count after
         int countAfter = countOfContacts();
 
-        System.out.println(countAfter);
+        logger.info("Count after remove is " );
         return countBefore-countAfter;
+
     }
 
     private int countOfContacts() {

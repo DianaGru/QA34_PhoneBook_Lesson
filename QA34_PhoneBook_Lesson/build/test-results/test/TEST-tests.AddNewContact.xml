@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="tests.AddNewContact" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-07-13T18:10:53" hostname="DESKTOP-B443DO6" time="1.792">
+  <properties/>
+  <testcase name="positiveAddNewContact" classname="tests.AddNewContact" time="1.792"/>
+  <system-out><![CDATA[21:10:42.682  INFO  tests.TestBase - Start method with name ---> positiveAddNewContact
+21:10:53.073  INFO  tests.TestBase - user
+21:10:53.099  INFO  tests.TestBase - Contact is -->>Contact(name=Hanna1, lastName=Levi, phone=052-3261490, email=hanna@gmail.com, address=Jaffo, Israel, description=student friend)
+21:10:54.798  INFO  tests.TestBase - Check name -->Hanna1
+21:10:54.864  INFO  tests.TestBase - Check phone is --> 052-3261490
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

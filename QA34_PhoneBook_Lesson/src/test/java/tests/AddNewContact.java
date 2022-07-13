@@ -18,13 +18,13 @@ public class AddNewContact extends TestBase {
 
         if (!app.getHelperUser().isLogged()) {
            app.getHelperUser().login(new User().setEmail("gigigmail.com").setPassword("Gigi12345$"));
-
+           logger.info("user");
 
         }
 
     }
 
-    @Test (invocationCount = 5)
+    @Test
     public void positiveAddNewContact() {
         Random random = new Random();
         int i = random.nextInt(1000)+1000;
@@ -37,13 +37,16 @@ public class AddNewContact extends TestBase {
                 .address("Jaffo, Israel")
                 .description("student friend")
                 .build();
+        logger.info("Contact is -->>" + contact.toString());
 
         app.contact().openContactForm();
         app.contact().fillContactForm(contact);
         app.contact().save();
 
         Assert.assertTrue(app.contact().isContactAddedByName(contact.getName()));
+        logger.info("Check name -->" + contact.getName());
         Assert.assertTrue(app.contact().isContactAddedByPhone(contact.getPhone()));
+        logger.info("Check phone is --> " + contact.getPhone());
     }
 
     @Test

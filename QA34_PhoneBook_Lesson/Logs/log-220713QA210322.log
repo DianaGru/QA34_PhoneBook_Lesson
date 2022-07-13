@@ -1,0 +1,18 @@
+21:03:25.021  INFO  manager.ApplicationManager - All tests run in Chrome browser
+21:03:25.768  INFO  manager.ApplicationManager - Current url --> https://contacts-app.tobbymarshall815.vercel.app/home
+21:03:26.025  INFO  tests.TestBase - Start method with name ---> positiveAddNewContact
+21:03:36.416  INFO  tests.TestBase - user
+21:03:36.432  INFO  tests.TestBase - Contact is -->>Contact(name=Hanna1, lastName=Levi, phone=052-3261144, email=hanna@gmail.com, address=Jaffo, Israel, description=student friend)
+21:03:38.083  INFO  tests.TestBase - Check name -->Hanna1
+21:03:38.169  INFO  tests.TestBase - Start method with name ---> positiveAddNewContact
+21:03:38.181  INFO  tests.TestBase - Contact is -->>Contact(name=Hanna1, lastName=Levi, phone=052-3261737, email=hanna@gmail.com, address=Jaffo, Israel, description=student friend)
+21:03:39.632  INFO  tests.TestBase - Check name -->Hanna1
+21:03:39.703  INFO  tests.TestBase - Start method with name ---> positiveAddNewContact
+21:03:39.719  INFO  tests.TestBase - Contact is -->>Contact(name=Hanna1, lastName=Levi, phone=052-3261715, email=hanna@gmail.com, address=Jaffo, Israel, description=student friend)
+21:03:41.144  INFO  tests.TestBase - Check name -->Hanna1
+21:03:41.221  INFO  tests.TestBase - Start method with name ---> positiveAddNewContact
+21:03:41.229  INFO  tests.TestBase - Contact is -->>Contact(name=Hanna1, lastName=Levi, phone=052-3261769, email=hanna@gmail.com, address=Jaffo, Israel, description=student friend)
+21:03:42.738  INFO  tests.TestBase - Check name -->Hanna1
+21:03:42.856  INFO  tests.TestBase - Start method with name ---> positiveAddNewContact
+21:03:42.867  INFO  tests.TestBase - Contact is -->>Contact(name=Hanna1, lastName=Levi, phone=052-3261122, email=hanna@gmail.com, address=Jaffo, Israel, description=student friend)
+21:03:44.281  INFO  tests.TestBase - Check name -->Hanna1
