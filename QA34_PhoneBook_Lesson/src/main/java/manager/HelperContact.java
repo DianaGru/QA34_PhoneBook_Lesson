@@ -44,5 +44,47 @@ public class HelperContact extends HelperBase{
         }
         return false;
         }
+
+
+
+    public boolean isContactAddedByPhone(String phone) {
+        List<WebElement> phones = wd.findElements(By.cssSelector("h3"));
+        for (WebElement el : phones) {
+            if (el.getText().equals(phones)) {
+                return true;
+            }
+
+        }
+
+        return false;
     }
+
+    public int removeOneContact() {
+
+        //count before
+        int countBefore = countOfContacts();
+        System.out.println(countBefore);
+
+        if(!isContactListEmpty()){
+            click(By.cssSelector(".contact-item_card__2SOIM"));
+            click(By.xpath("//button[text()='Remove']"));
+            pause(500);
+        }
+
+        //count after
+        int countAfter = countOfContacts();
+
+        System.out.println(countAfter);
+        return countBefore-countAfter;
+    }
+
+    private int countOfContacts() {
+        return wd.findElements(By.cssSelector(".contact-item_card__2SOIM")).size();
+    }
+
+    private boolean isContactListEmpty() {
+        return wd.findElements(By.cssSelector(".contact-item_card__2SOIM")).isEmpty();
+    }
+
+}
 

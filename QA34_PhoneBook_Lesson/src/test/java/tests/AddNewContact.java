@@ -24,7 +24,7 @@ public class AddNewContact extends TestBase {
 
     }
 
-    @Test
+    @Test (invocationCount = 5)
     public void positiveAddNewContact() {
         Random random = new Random();
         int i = random.nextInt(1000)+1000;
@@ -43,6 +43,7 @@ public class AddNewContact extends TestBase {
         app.contact().save();
 
         Assert.assertTrue(app.contact().isContactAddedByName(contact.getName()));
+        Assert.assertTrue(app.contact().isContactAddedByPhone(contact.getPhone()));
     }
 
     @Test
