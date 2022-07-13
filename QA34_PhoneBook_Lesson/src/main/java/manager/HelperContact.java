@@ -4,8 +4,12 @@ import models.Contact;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
+import java.util.Random;
 
 public class HelperContact extends HelperBase{
     public HelperContact(WebDriver wd) {
@@ -14,6 +18,7 @@ public class HelperContact extends HelperBase{
 
 
     public void openContactForm() {
+        pause(500);
         click(By.xpath("//a[text()='ADD']"));
     }
 
@@ -86,5 +91,40 @@ public class HelperContact extends HelperBase{
         return wd.findElements(By.cssSelector(".contact-item_card__2SOIM")).isEmpty();
     }
 
+    public void removeAllContacts() {
+        while (countOfContacts()!=0){
+            click(By.cssSelector(".contact-item_card__2SOIM"));
+            click(By.xpath("//button[text()='Remove']"));
+            pause(500);
+
+        }
+    }
+
+    public boolean isNoContactsHere() {
+        return new WebDriverWait(wd, Duration.ofSeconds(5))
+                .until(ExpectedConditions.textToBePresentInElement(wd.findElement(By.cssSelector(".contact-page_message__2qafk h1")), "No Contacts here!"));
+    }
+
+    public void providerContactData() {
+
+        Random random = new Random();
+
+        if(countOfContacts() < 4){
+            //add new contacts
+            for (int i = 0; i < 3; i++) {
+                int index = random.nextInt(100)+100;
+                openContactForm();
+                fillContactForm(Contact.builder()
+                        .name("John"+index)
+                        .lastName("Line")
+                        .email("L=line"+index+"gmail.com")
+                        .phone("052-123654"+i)
+                        .address("NY")
+                        .build());
+                save();
+
+            }
+        }
+    }
 }
 
